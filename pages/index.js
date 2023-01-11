@@ -23,12 +23,25 @@ function HomePage(props) {
   return <MeetupList meetups={props.meetups} />;
 }
 
+//getServerSideProps is better for bigger projects with constantly changing data
+// export async function getServerSideProps(context) {
+//     const req = context.req;
+//     const res = context.res;
+//   //fetch data from an API
+//   return {
+//     props: {
+//       meetups: DUMMY_MEETUPS,
+//     },
+//   };
+// }
+
 export async function getStaticProps() {
   //fetch data from an API
   return {
     props: {
       meetups: DUMMY_MEETUPS,
     },
+    revalidate: 1
   };
 }
 
