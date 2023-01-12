@@ -1,6 +1,8 @@
+import Head from "next/head";
 import { MongoClient } from "mongodb";
 
 import MeetupList from "../components/meetups/MeetupList";
+import { Fragment } from "react";
 
 // const DUMMY_MEETUPS = [
 //   {
@@ -22,7 +24,18 @@ import MeetupList from "../components/meetups/MeetupList";
 // ];
 
 function HomePage(props) {
-  return <MeetupList meetups={props.meetups} />;
+  return (
+    <Fragment>
+      <Head>
+        <title>Next Meetups</title>
+        <meta
+          name="description"
+          content="Schedule and plan out your Next Meetup!"
+        />
+      </Head>
+      <MeetupList meetups={props.meetups} />;
+    </Fragment>
+  );
 }
 
 //getServerSideProps is better for bigger projects with constantly changing data
